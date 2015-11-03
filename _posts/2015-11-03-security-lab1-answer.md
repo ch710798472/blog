@@ -14,13 +14,11 @@ excerpt: "Exercise 1：根据如下代码，打印出buffer数组的地址，其
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
 void badman()
 {
     printf("I am the bad man\n");
     return;
 }
-
 int func(char *str)
 {
   int variable_a;
@@ -30,7 +28,6 @@ int func(char *str)
   
   return 1;
 }
-
 int main(int argc, char **argv)
 {
   char *buf = "hello\n";
@@ -45,11 +42,13 @@ int main(int argc, char **argv)
 }
 ```
 使用如下命令输出结果
-`./stack1 >> address.txt`
-`./stack1 >> address.txt`
-`./stack1 >> address.txt`
+```
+./stack1 >> address.txt
+./stack1 >> address.txt
+./stack1 >> address.txt
 查看结果
-`cat address.txt`
+cat address.txt
+```
 
 #Exercise2:
 
@@ -68,7 +67,8 @@ int main(int argc, char **argv)
 
 　　关闭ASLR，即地址空间随机化机制：
 
-　　在终端运行`sudo sysctl -w kernel.randomize_va_space=0`,将其设为0即可(或者`sudo -i`进入root权限下`echo 0 >/proc/sys/kernel/randomize_va_space`)，查看是否成功`cat /proc/sys/kernel/randomize_va_space`然后我们再运行三次stack1.c，如下图所示，可以看到buffer的地址是相同的。![](http://i.imgur.com/8nnpcph.png)
+　　在终端运行`sudo sysctl -w kernel.randomize_va_space=0`,将其设为0即可(或者`sudo -i`进入root权限下`echo 0 >/proc/sys/kernel/randomize_va_space`)，查看是否成功`cat /proc/sys/kernel/randomize_va_space`然后我们再运行三次stack1.c，如下图所示，可以看到buffer的地址是相同的。
+![](http://i.imgur.com/8nnpcph.png)
 #　Exercise4:
 
 　　我们需要关闭栈保护机制，否则系统禁止我们访问，关闭保护：
@@ -203,7 +203,9 @@ int main()
 }
 
 ```
-![](http://i.imgur.com/5s5cQa2.png)
+![](http://i.imgur.com/5s5cQa2.png)  
+  
+
 ```
 __asm__(".globl mystart\n" 
 	  "mystart:\n"
@@ -231,9 +233,11 @@ __asm__(".globl mystart\n"
 	  "leave\n"
 	  "ret\n"
 	  );
-```
+```  
+
 ![](http://i.imgur.com/RwBFq2M.png)
-　　创建你的文件文件，运行./broswer程序之后，可以发现文件被成功删除。
+　　创建你的文件文件，运行./broswer程序之后，可以发现文件被成功删除。  
+
 ```
 char req[1065];
   long *ptr,*addr_ptr;
