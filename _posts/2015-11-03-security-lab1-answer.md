@@ -3,7 +3,7 @@ layout: post
 title: 信息安全实验一解答（缓冲区溢出攻击）
 category: security
 modified: 2015-11-03
-tags: [security,buffer overflow]
+tags: [security,buffer overflow,ustc]
 comments: true
 pinned: true
 excerpt: "Exercise 1：根据如下代码，打印出buffer数组的地址，其中注释部分便是加入的代码，编译并运行程序三次，结果如下图所示，可以看到三次分配给func函数里buffer数组的地址各不相同。..."
