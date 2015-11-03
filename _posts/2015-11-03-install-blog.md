@@ -26,7 +26,7 @@ excerpt: "准备工作(windows环境)1. Git for Windows2. MarkdownPad 2 3. 一�
 2. [jekyll进阶](http://higrid.net/c-art-blog_jekyll.htm)
 3. [一些模板](http://www.zhihu.com/question/20223939)   [再来一些](http://jekyllthemes.org/)
 4. [最好还是看一些jekyll的官方介绍](https://github.com/jekyll/jekyll)  
-好了差不多你也了解很多的jekyll和github的知识了。下面你需要找到你看中的github上的blog，找到一个然后fork到自己的github（右上角的fork按钮），然后改工程名为blog（改工程名是要进工程，然后在左下角有个setting，点进去，最上面有个RENAME，对就是它了），接下来需要在本地的电脑上操作了。
+好了差不多你也了解很多的jekyll和github的知识了。下面你需要找到你看中的github上的blog，[当然你需要fork我的blog也可以在这里，请点一个星，谢谢，在右上角Star](https://github.com/ch710798472/just_fork_blog)找到一个然后fork到自己的github（右上角的fork按钮），然后改工程名为blog（改工程名是要进工程，然后在左下角有个setting，点进去，最上面有个RENAME，对就是它了），接下来需要在本地的电脑上操作了。
 ```
 mkdir blog
 cd blog
@@ -48,6 +48,7 @@ git push origin gh-pages
 ![](http://i.imgur.com/7O4Nxzl.png)
 
 #结果  
-　　好了，到这里你的github博客应该可以访问了，YourGitName.github.io/blog就能访问了,如果不能访问，请在新建一个YourGitName.github.io的项目，可能是没有这个项目导致的，你说为什么不用YourGitName.github.io作为域名，我这不是留给你自己写自己真正的博客用的嘛，我只是给你个参考而不能让你用不了本身的YourGitName.github.io。  
-　　如果你觉得这篇博客还不错，请给个评论或者其他的啥的。谢谢，我会在空闲的时间更新个友情链接的模块，到时候大家可以把我得博客加入到友情链接里面。
+　　好了，到这里你的github博客应该可以访问了，YourGitName.github.io/blog就能访问了,如果不能访问，请在新建一个YourGitName.github.io的项目，可能是没有这个项目导致的，你说为什么不用YourGitName.github.io作为域名，我这不是留给你自己写自己真正的博客用的嘛，我只是给你个参考而不能让你用不了本身的YourGitName.github.io。
+![](http://i.imgur.com/bb7e5Qc.png)  
+　　如果你觉得这篇博客还不错，请给个评论或者给我的github项目一个星[myblog](https://github.com/ch710798472/just_fork_blog)。谢谢，我会在空闲的时间更新个友情链接的模块，到时候大家可以把我得博客加入到友情链接里面。
 
