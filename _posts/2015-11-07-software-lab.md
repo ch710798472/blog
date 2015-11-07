@@ -19,8 +19,8 @@ excerpt: " 实验报告地址：...代码库地址：..."
 
 #代码库
 [实验一代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab1)
-[实验一代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab2)
-[实验一代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab3)
-[实验一代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab4)
-[实验一代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab5)
-[实验一代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab7)
+[实验二代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab2)
+[实验三代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab3)
+[实验四代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab4)
+[实验五代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab5)
+[实验七代码库](http://git.shiyanlou.com/ch710798472/shiyanlou_cs122/src/master/lab7)
