@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 软件工程--设计一个可重用基于链表的菜单程序
-category: security
+category: software
 modified: 2015-11-03
 tags: [software,ustc]
 comments: true
