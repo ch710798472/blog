@@ -62,9 +62,10 @@ int main()
   foo(1);
   return 0;
 }
-We can use “gcc -S foobar.c” to compile this program to the assembly code. The resulting file foobar.s will look like the following:
+```
+　　We can use “gcc -S foobar.c” to compile this program to the assembly code. The resulting file foobar.s will look like the following:
 
-
+```
   8 foo:
   9         pushl   %ebp
  10         movl    %esp, %ebp
