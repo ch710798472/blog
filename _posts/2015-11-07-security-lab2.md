@@ -51,7 +51,7 @@ The key observation to exploiting buffer overflows with a non-executable stack i
 　　To know how to conduct the return-to-libc attack, it is essential to understand how the stack works. We use a small C program to understand the effects of a function invocation on the stack.
 ```
 /* foobar.c */
-#include <stdio.h>
+include <stdio.h>
 void foo(int x)
 {
   printf("Hello world: %d\n", x);
