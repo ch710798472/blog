@@ -50,6 +50,7 @@ The key observation to exploiting buffer overflows with a non-executable stack i
 
 　　To know how to conduct the return-to-libc attack, it is essential to understand how the stack works. We use a small C program to understand the effects of a function invocation on the stack.
 ```
+
 foobar.c
 include <stdio.h>
 void foo(int x)
@@ -62,6 +63,7 @@ int main()
   foo(1);
   return 0;
 }
+
 ```
 　　We can use “gcc -S foobar.c” to compile this program to the assembly code. The resulting file foobar.s will look like the following:
 
@@ -128,6 +130,7 @@ The first statement release the stack space allocated for the function; the seco
 
 　　Use gdb to smash the function stack, the C program offered you here is exec3.c. Note that, the function address at your PC may be different from mine, but just take it easy.
 ```
+
 $ make exec3
 $ gdb -q exec3
 Reading symbols from exec3...done.
@@ -158,6 +161,7 @@ exec3  exec3.c nop-overflow.c    stack1.c  stack.c  test.c  x
 
 Program received signal SIGSEGV, Segmentation fault.
 0xbffff3d8 in ?? ()
+
 ```
 　　As you can see, the command system(“ls”) constructed by gdb runs smoothly, but not perfect. What triggered the “SIGSEG” fault? Modify the process memory in gdb just likeabove, to to let the process exit gracefully.
 
@@ -170,9 +174,11 @@ Program received signal SIGSEGV, Segmentation fault.
 
 　　First, compile the Touchstone webserver:
 ```
+
   $ cd server
   $ make all
   $ ./touchstone
+
 ```
 　　Now, try to perform a return-to-libc attack by contructing and sending a malicious request containing your shellcode. Your shellcode can still delete a file from the web server, or can do something else.
 
@@ -200,8 +206,10 @@ Perform a ret-to-libc attack with using Environment Variables to do someting lik
 
 　　Now, turn on the Ubuntu’s address space layout randomization:
 ```
-$ su root
-# /sbin/sysctl -w kernel.randomize_va_space=2
+
+ $ su root
+ #/sbin/sysctl -w kernel.randomize_va_space=2
+
 ```
 ##Exercise 4. 
 　　After turning on the ASLR, compile the Touchstone web server:
