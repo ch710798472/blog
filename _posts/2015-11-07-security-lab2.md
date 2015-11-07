@@ -50,7 +50,7 @@ The key observation to exploiting buffer overflows with a non-executable stack i
 
 　　To know how to conduct the return-to-libc attack, it is essential to understand how the stack works. We use a small C program to understand the effects of a function invocation on the stack.
 ```
-/* foobar.c */
+foobar.c
 include <stdio.h>
 void foo(int x)
 {
@@ -64,7 +64,7 @@ int main()
 }
 We can use “gcc -S foobar.c” to compile this program to the assembly code. The resulting file foobar.s will look like the following:
 
-......
+
   8 foo:
   9         pushl   %ebp
  10         movl    %esp, %ebp
@@ -75,7 +75,7 @@ We can use “gcc -S foobar.c” to compile this program to the assembly code. T
  15         call    printf
  16         leave
  17         ret
-    ......
+
  21 main:
  22         leal    4(%esp), %ecx
  23         andl    $-16, %esp
