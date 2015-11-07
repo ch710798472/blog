@@ -49,9 +49,9 @@ The key observation to exploiting buffer overflows with a non-executable stack i
 　　Understand the Stack
 
 　　To know how to conduct the return-to-libc attack, it is essential to understand how the stack works. We use a small C program to understand the effects of a function invocation on the stack.
-```
 
-foobar.c
+```
+/*foobar.c*/
 include <stdio.h>
 void foo(int x)
 {
@@ -65,6 +65,7 @@ int main()
 }
 
 ```
+
 　　We can use “gcc -S foobar.c” to compile this program to the assembly code. The resulting file foobar.s will look like the following:
 
 ```
@@ -96,6 +97,7 @@ int main()
  35         leal    -4(%ecx), %esp
  36         ret
 ```
+
 ###Calling and Entering foo()
 
 　　Let us concentrate on the stack while calling foo(). We can ignore the stack before that. Please note that line numbers instead of instruction addresses are used in this explanation.
@@ -113,10 +115,12 @@ int main()
 　　　　Now the control has passed to the function foo(). Let us see what happens to the stack when the function returns.
 
 1. Line 16: leave This instruction implicitly performs two instructions (it was a macro in earlier x86 releases, but was made into an instruction later):
+
 ```
   mov  %ebp, %esp
   pop  %ebp
 ```
+
 The first statement release the stack space allocated for the function; the second statement recover the previous frame pointer. The current stack is depicted in Figure(e).
 
 2. Line 17: ret This instruction simply pops the return address out of the stack, and then jump to the return address. The current stack is depicted in Figure(f).
@@ -129,8 +133,8 @@ The first statement release the stack space allocated for the function; the seco
 ##Exercise 2.
 
 　　Use gdb to smash the function stack, the C program offered you here is exec3.c. Note that, the function address at your PC may be different from mine, but just take it easy.
-```
 
+```
 $ make exec3
 $ gdb -q exec3
 Reading symbols from exec3...done.
@@ -161,8 +165,8 @@ exec3  exec3.c nop-overflow.c    stack1.c  stack.c  test.c  x
 
 Program received signal SIGSEGV, Segmentation fault.
 0xbffff3d8 in ?? ()
-
 ```
+
 　　As you can see, the command system(“ls”) constructed by gdb runs smoothly, but not perfect. What triggered the “SIGSEG” fault? Modify the process memory in gdb just likeabove, to to let the process exit gracefully.
 
 　　Ret-to-libc Attack
@@ -173,13 +177,13 @@ Program received signal SIGSEGV, Segmentation fault.
 ##Exercise 3.
 
 　　First, compile the Touchstone webserver:
-```
 
+```
   $ cd server
   $ make all
   $ ./touchstone
-
 ```
+
 　　Now, try to perform a return-to-libc attack by contructing and sending a malicious request containing your shellcode. Your shellcode can still delete a file from the web server, or can do something else.
 
 　　The Environment Variables
@@ -205,12 +209,12 @@ Perform a ret-to-libc attack with using Environment Variables to do someting lik
 　　Address space layout randomization is a technique used to fortify systems against buffer overflow attacks. The idea is to introduce artificial diversity by randomizing the memory location of certain system components. This mechanism is available for both Linux (via PaX ASLR) and OpenBSD.
 
 　　Now, turn on the Ubuntu’s address space layout randomization:
-```
 
+```
  $ su root
  #/sbin/sysctl -w kernel.randomize_va_space=2
-
 ```
+
 ##Exercise 4. 
 　　After turning on the ASLR, compile the Touchstone web server:
 ```
