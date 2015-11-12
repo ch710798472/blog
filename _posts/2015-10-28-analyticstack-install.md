@@ -24,6 +24,18 @@ grep 'VAGR' ~/.bashrc
 export VAGRANT_HOME='/path/to/vagrant_home'
 （当然以上是Ubuntu下的方法，在win7下你只需要复制.vagrant.d文件到指定地方，然后添加环境变量VAGRANT_HOME）  
 　　还有[xshell](http://www.netsarang.com/products/xsh_overview.html)这三个工具，怎么安装成功百度即可，没有难度，但是版本必须大于edx要求的版本，一般最新版即可[analytics-devstack版本要求](http://edx.readthedocs.org/projects/edx-installing-configuring-and-running/en/latest/devstack/analytics_devstack.html#using-the-analytics-devstack)，在这个链接里面写出来了怎么来安装，但是由于国内的网络环境，我们经常是被卡在墙外的，所以必须另辟蹊径。
+###环境
+
+```
+$ git clone https://github.com/edx/edx-analytics-pipeline
+
+$ cd edx-analytics-pipeline
+$ virtualenv venv
+$ source venv/bin/activate
+$ make bootstrap
+$ mkdir analyticstack
+$ cd analyticstack
+```
 
 　　首先我们在mirrors.edxstack.org下载所需要的analyticstack.box文件,在某个盘里新建目录analyticstack，然后用cmd，进入到你的对应的目录位置　　
 ```
@@ -32,11 +44,21 @@ cd analyticstack
 vagrant init(没有这一步会导致后面文件读写和解压失败),添加虚拟机文件  
 vagrant box add analyticstack analyticstack.box（box文件不在当前目录vagrant box add analyticstack ..\download\analyticstack.box请遵守Windows下的目录规则），等待十几分钟的样子，如果成功了，继续下一步，  
 vagrant init analyticstack 初始化虚拟机  
+```
+
+把vagrantfile文件拷贝到刚生成的vagrantfile,[地址](https://raw.github.com/edx/configuration/master/vagrant/release/analyticstack/Vagrantfile)
+
+```
 vagrant up 千万不能再第一次 vagrant up的时候中断，不然会造成一些其他的问题(我第一次就造成文件丢失)，如果顺利的话就会看到启动成功的界面，再  
 vagrant ssh 开启ssh连接
 ```  
+
+![](http://i.imgur.com/VJ3V3cT.png)
+![](http://i.imgur.com/0dw6Y1w.png)
+
 　　使用xshell新建链接，输入ip和端口号，一般是127.0.0.1和2222，每次vagrant ssh会有提示。然后提示输入用户名和密码，都是vagrant。  
 ![xshell](http://i.imgur.com/onten3M.png)
+
 
 #启用edX Analytics Data API
 

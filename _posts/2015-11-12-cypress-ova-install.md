@@ -16,8 +16,10 @@ pinned: true
 
 #安装
 　　用vbox打开你下载的.ova文件，然后成功的导入之后（怎么导入ova请自行百度），启动虚拟机，到目前为止不需要修改任何配置。如果不出意外的，你会看到黑屏幕上有个openedx的图案，这是tty界面，这时候需要输入用户名密码，用户名：edustack 密码：edustack.org
+![](http://i.imgur.com/kf6DFST.png)
 ###　　一、修改网络配置
 　　在virtualbox上找到设备->网络->更改网络配置，进入之后修改为桥接模式，界面名称这个你可以试试，总共没多少个，我是选的Network Adapter结尾的一个，点击确定。你的openedx会出现一行命令，不用管，确定即可。下面修改配置文件
+![](http://i.imgur.com/IKctvXc.png)
 
 ```
 sudo vi /etc/network/interfaces
@@ -39,6 +41,8 @@ ping www.baidu.com
 ```
 　　没成功，你需要换个界面名称，然后在重启一下网络。因为我不太懂界面名称的不同对于网络的影响，所以你得靠自己了。多尝试，肯定可以的。
 　　然后你可以打开浏览器输入网址打开lms->虚拟机ip:80,cms->虚拟机ip:18010
+![](http://i.imgur.com/S9bUDgG.png)  
+
 　　这是一些测试账号，格式是账号功能 账户名:密码
 
 ```
@@ -55,15 +59,11 @@ audit audit@example.com:edx
 　　不过可能，某些命令不太适用了，比如汉化就可以不用了，自带汉化了，个别地方没有完成的汉化可以自己改一下。创建超级用户命令不适用了，具体可以参考如下：
 
 ```
-sudo -u www-data /edx/bin/python.edxapp ./manage.py lms --
+sudo -u www-data /edx/bin/python.edxapp ./manage.py lms --settings aws create_user -s -p edx -e user@example.com
 
-settings aws create_user -s -p edx -e user@example.com
-sudo -u www-data /edx/bin/python.edxapp ./manage.py lms --
+sudo -u www-data /edx/bin/python.edxapp ./manage.py lms --settings aws changepassword user
 
-settings aws changepassword user
-sudo -u www-data /edx/bin/python.edxapp ./manage.py lms --
-
-settings aws shell
+sudo -u www-data /edx/bin/python.edxapp ./manage.py lms --settings aws shell
 
 from django.contrib.auth.models import User
 me = User.objects.get(username="user")
