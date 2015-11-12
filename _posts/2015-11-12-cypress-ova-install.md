@@ -71,6 +71,7 @@ me.is_superuser = True
 me.is_staff = True
 me.save()
 
+解释：./manage.py 是edx-platform下的
 ```
 
 　　其他的管理命令，请照例修改。另外在输入命令过程如果碰到密码错误或者不知道的密码，证明你用户账号弄错了，只有在edustack下使用密码edustack.org才是正确的，你需要退出当前账号，在输入命令。
