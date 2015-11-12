@@ -30,7 +30,7 @@ export VAGRANT_HOME='/path/to/vagrant_home'
 f:(假设在f盘)  
 cd analyticstack  
 vagrant init(没有这一步会导致后面文件读写和解压失败),添加虚拟机文件  
-vagrant box add analyticstack analyticstack.box（box文件不在当前目录vagrant box add analyticstack file:///e:\download\analyticstack.box），等待十几分钟的样子，如果成功了，继续下一步，  
+vagrant box add analyticstack analyticstack.box（box文件不在当前目录vagrant box add analyticstack ..\download\analyticstack.box请遵守Windows下的目录规则），等待十几分钟的样子，如果成功了，继续下一步，  
 vagrant init analyticstack 初始化虚拟机  
 vagrant up 千万不能再第一次 vagrant up的时候中断，不然会造成一些其他的问题(我第一次就造成文件丢失)，如果顺利的话就会看到启动成功的界面，再  
 vagrant ssh 开启ssh连接
