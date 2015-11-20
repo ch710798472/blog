@@ -15,7 +15,7 @@ pinned: true
 2. virtual box 4.3.24版本
 
 #安装
-　　用vbox打开你下载的.ova文件，然后成功的导入之后（怎么导入ova请自行百度），启动虚拟机，到目前为止不需要修改任何配置。如果不出意外的，你会看到黑屏幕上有个openedx的图案，这是tty界面，这时候需要输入用户名密码，用户名：edustack 密码：edustack.org
+　　用vbox打开你下载的[.ova](http://mirrors.edustack.org/)文件，然后成功的导入之后（怎么导入ova请自行百度），启动虚拟机，到目前为止不需要修改任何配置。如果不出意外的，你会看到黑屏幕上有个openedx的图案，这是tty界面，这时候需要输入用户名密码，用户名：edustack 密码：edustack.org
 ![](http://i.imgur.com/kf6DFST.png)
 ###　　一、修改网络配置
 　　在virtualbox上找到设备->网络->更改网络配置，进入之后修改为桥接模式，界面名称这个你可以试试，总共没多少个，我是选的Network Adapter结尾的一个，点击确定。你的openedx会出现一行命令，不用管，确定即可。下面修改配置文件

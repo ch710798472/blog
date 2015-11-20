@@ -87,4 +87,4 @@ PS1="┌─[\[\033[0;32m\]\A \[\033[0;31m\]\u\[\033[0;34m\]@\[\033[0;35m\]\h\[\0
 #####　　上述所有的PS1可以拷贝进去放在./bashrc最后一行，重启terminal试试效果，说不定会有惊喜！
 
 #补充：
-　　有些用户喜欢个性化定制的桌面，添加一些桌面监测小工具，可以试试[Unity Tweak Tool](http://www.2cto.com/os/201501/372413.html), 或者Gnome Tweak Tool，但是最好是Ubuntu系统大于12.04版本，不然是不支持的，友情提示一下，最好先装好显卡驱动。
+　　也可以直接用zsh,fish等，用的比较多的是oh my zsh！有些用户喜欢个性化定制的桌面，添加一些桌面监测小工具，可以试试[Unity Tweak Tool](http://www.2cto.com/os/201501/372413.html), 或者Gnome Tweak Tool，但是最好是Ubuntu系统大于12.04版本，不然不支持很多特性。
