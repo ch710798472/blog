@@ -23,4 +23,4 @@ excerpt: "In this lab, you’ll explore privilege separation. The key insight of
 ###Part B: you will explore jail, by which you can constraint the service in some fake root directory; and
 ###Part C: you will privilege-separate the Touchstone web server by assigning each component appropriate privilege.
 
-###　　More details plase download files from [baidu yunpan](http://pan.baidu.com/s/1nts50oT) passwd: a28p
+###　　I got really really so busy, which let me upload all the files. More details plase download files from [baidu yunpan](http://pan.baidu.com/s/1nts50oT) passwd: a28p
