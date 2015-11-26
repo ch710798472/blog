@@ -34,7 +34,7 @@ sudo docker run -itd -p 80:80 -p 2022:22 -p 18010:18010 wwj718/edx_cypress_docke
 ```
 ssh root@localhost -p 2022
 ```
-
+![](http://i.imgur.com/LSjenoJ.jpg)
 
 ###5. 使用Pycharm开发的话，只需要把remote Python interpreters指向docker中的/edx/app/edxapp/venvs/edxapp/bin/python即可
 
@@ -43,7 +43,7 @@ ssh root@localhost -p 2022
 ###7. 如果是开发的时候不需要运行第3步，直接运行开发环境即可，-v 后面是你想要挂在的目录以及映射到docker里面的目录，值得说明的是，edx的所有代码在根目录下，不要ssh进去之后用命令ls查看，没有代码就认为安装失败了，请直接进入/edx（根目录下）目录查看即可。
 
 ```
-sudo docker run -itd -p 5000:5000 -p 5010:5010 -p 2022:22 -v ~/edx-platform:/edx/app/edxapp/edx-platform-dev wwj718/edx_cypress_docker:1.11
+sudo docker run -itd -p 5000:5000 -p 5010:5010 -p 2022:22 -v ~/edx-platform:/edx/app/edxapp/edx-platform-dev wwj718/edx_cypress_docker:1.21
 ```
 ###结束之后，记得保持良好的习惯关闭容器，避免导致不必要的错误（sudo docker stop id）。
 
