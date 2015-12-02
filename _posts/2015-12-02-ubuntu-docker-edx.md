@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 让你的ubuntu美起来
+title: 在Ubuntu14.04 Desktop LTS下安装社区docker版edx
 category: edx
 modified: 2015-12-02
 tags: [ubuntu,edx,docker]
 comments: true
 pinned: true
-excerpt: "在Ubuntu14.04 Desktop LTS下安装社区docker版edx..."
+excerpt: "1. 安装使用docker 2. 拉取docker镜像文件 3. 运行edx 4. SSH登陆..."
 ---
 
 ###安装环境 ubuntu14.04
