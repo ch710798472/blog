@@ -81,3 +81,5 @@ paver devstack [--fast] lms/studio
 
 ##13. 最好看一看熟悉一下流程。分工协作，或者开发一个XBLOCK请参考[种瓜大神的博客](http://wwj718.github.io/install-youkuXblock-into-edx.html)
 
+##14. 如果是windows环境，请找到你的docker的虚拟机的IP替换上面的localhost
+
