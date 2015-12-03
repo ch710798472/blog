@@ -59,6 +59,7 @@ linux ${rel_dirname}/${basename} root=${LINUX_HOST_DEVICE} loop=${loop_file_rela
 #最终大杀器－－据说比苹果系统还好看的界面cairo-dock
 　　[http://jingyan.baidu.com/article/4853e1e519e70c1908f7266e.html](http://jingyan.baidu.com/article/4853e1e519e70c1908f7266e.html)
    我们安装成功之后可以在最下面的工具栏单击右键，选择自己喜欢的插件，其中天气是最实用的，不过可能地址不对，你需要找到插件设置里面的天气官网，是国外的网站，进去之后搜索自己的地区，把代号填到插件设置里面去，就可以了。
+![](http://i.imgur.com/ifJc4tj.jpg)
 ![](http://i.imgur.com/ORY8654.jpg)
 ![](http://i.imgur.com/hn6BVqg.png)
 ![](http://i.imgur.com/PFbuqng.png)
