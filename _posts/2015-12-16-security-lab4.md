@@ -28,8 +28,8 @@ excerpt: "This lab consists of three parts:Part A: you will explore identity for
 
 ###Exercise 2:
 　　首先我们需要对转账的数目进行边界检查，然后在对转账的用户进行检查，就可以了。在handle.c文件的handlePostTransfer()函数中添加下列代码
-```
 
+```
     int t = Db_checkUser(to);
     if(!t)//user don't exist{
       printf("user don't exist!");
@@ -46,6 +46,7 @@ excerpt: "This lab consists of three parts:Part A: you will explore identity for
     return;}
 
 ```
+
 运行后再检查上面的bug，发现实际可行，具体如下图：
 ![](http://i.imgur.com/UffI4dk.jpg)
 ![](http://i.imgur.com/7MGsFiX.jpg)
@@ -57,6 +58,7 @@ excerpt: "This lab consists of three parts:Part A: you will explore identity for
 ###Exercise 4:
 　　我们可以借助firefox自带的firebug来查看POST的请求具体的值。
 　　我们可以发现四个参数具体值，其中submit_transfer参数代表了是执行转账操作，下面三个分别是转账人、转账多少、转账给谁。那么我们就可以利用这个来构造一个POST请求，但是这里我们为了方便快捷，可以使用另外一个firefox自带的插件工具Live HTTP headers，利用其中replay功能，进行重放攻击，并且可以任意修改其中的参数，正好适合我们构造POST请求，如下图所示，由aaa转账给bbb，并且很容易从右边的服务器命令行输出的信息判断是成功的：
+
 ![](http://i.imgur.com/xcTVJ8K.jpg)
 ![](http://i.imgur.com/f5F5ZVu.jpg)
 ![](http://i.imgur.com/1UGObEn.jpg)
@@ -86,8 +88,8 @@ excerpt: "This lab consists of three parts:Part A: you will explore identity for
 
 ###Exercise 7:
     1. 首先需要写三个函数实现添加cookie到数据库（Db_readCookie），从数据库中读取cookie（Db_writeCookie）,以及对cookie进行加密（encryp_cookie），这些都放在sql-lite3/dbutil.c文件中，当然得先在user表中添加cookie字段（VARCHAR(50)）：
-```
 
+```
 	char* Db_readCookie (const char *name)
 	{
     if(DEBUG)
@@ -168,9 +170,10 @@ excerpt: "This lab consists of three parts:Part A: you will explore identity for
      }
 
 ```
-　　2. 接下来需要在handle.c中handlePost函数里实现解密的部分，其实解密就是用秘钥数字3来进行异或运算即可：
-```
 
+　　2. 接下来需要在handle.c中handlePost函数里实现解密的部分，其实解密就是用秘钥数字3来进行异或运算即可：
+
+```
     //add to check cookie
     char *cookie = getCookie();//cookie: aaa=222
     int c_t = 0;
