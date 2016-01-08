@@ -6,7 +6,7 @@ modified: 2016-01-08
 tags: [security,apk,smali]
 comments: true
 pinned: true
-excerpt: "In this lab, you’ll understand the principal of buffer overflows and will understand how such attacks happen in real-world application (say, a web server)..."
+excerpt: "1. 逆向给定的两个apk，SimpleCrackme，Crackme01）2.找到正确的key（正确的key输入后点击check按钮会出现“黄色背景的提示文字”，错误的输入是“灰色背景的提示文字”）..."
 ---
 
 #Lab4 OverView
@@ -21,7 +21,7 @@ excerpt: "In this lab, you’ll understand the principal of buffer overflows and
 - baksmali.jar
 - smali.jar
 - signapk
-[实验所需全部工具源码](链接：http://pan.baidu.com/s/1jHw2k3G) 密码：b4tg
+[实验所需全部工具源码](http://pan.baidu.com/s/1jHw2k3G) 密码：b4tg
 
 #开始解题
 #### 1. 先来破解SimpleCrackme.apk，解压apk文件得到classes.dex文件，利用baksmali.jar得到smali代码，如下图所示（out文件夹内）：
@@ -33,12 +33,15 @@ excerpt: "In this lab, you’ll understand the principal of buffer overflows and
 ![](http://i.imgur.com/9Z7eEoc.png)
 ####然后用smali.jar打包成.dex文件，复制到原来的解压文件下，然后在压缩文件，改后缀为apk，在用signapk重新签名，安装运行。
 ![](http://i.imgur.com/xG0I6uC.png)
+-----------------------------------------------------
 ![](http://i.imgur.com/q49hpG0.png)
+-----------------------------------------------------
 ![](http://i.imgur.com/AAo6Lay.png)
 ####结果如下（一个是破解字符串，一个是修改了源码的）：
 ![](http://i.imgur.com/CQMGoLC.png)
+-----------------------------------------------------
 ![](http://i.imgur.com/asWwuiq.png)
-
+-----------------------------------------------------
 ####2. 破解Crackme01.apk，首先同样的利用baksmail.jar反编译classes.dex得到我们能看得懂的smali代码，然后阅读代码，发现a.smali中用于检查字符串的代码用的是invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z，而且返回值是布尔类型，而且文件里也没有声明字符串，那么只需要把v2打印出来看看就知道是什么了（不打印v3的原因是从它是MainActivity传入的参数，iget-object v3, p0, Lcom/exiahan/crackme01/a;->c:Ljava/lang/String;），在字符串比较之前加入一段代码用于在控制台输出字符串：
 ![](http://i.imgur.com/urNP53S.png)
 ####当然了，仅仅加这个代码会因为签名的改变导致程序不能正确运行，那么在MainActivity.smali找到用于程序中签名的函数，改变其返回值即可。
