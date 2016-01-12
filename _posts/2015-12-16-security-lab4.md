@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 信息安全实验四题目以及解答（privilege-separation）
+title: 信息安全（privilege-separation）
 category: security
 modified: 2015-12-16
 tags: [security,setuid]

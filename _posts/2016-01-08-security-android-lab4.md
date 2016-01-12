@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 安卓安全实验四题目（逆向apk）
+title: 安卓安全（逆向apk）
 category: security
 modified: 2016-01-08
 tags: [security,apk,smali]

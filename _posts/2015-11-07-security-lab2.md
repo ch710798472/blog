@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 信息安全实验二题目（return-to-libc）
+title: 信息安全（return-to-libc）
 category: security
 modified: 2015-11-07
 tags: [security,return to libc]

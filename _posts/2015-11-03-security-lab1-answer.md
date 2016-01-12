@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 信息安全实验一解答（缓冲区溢出攻击）
+title: 信息安全（缓冲区溢出攻击解答）
 category: security
 modified: 2015-11-03
 tags: [security,buffer overflow,ustc]

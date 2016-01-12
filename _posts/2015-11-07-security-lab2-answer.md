@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 信息安全实验二解答（return-to-libc）
+title: 信息安全（return-to-libc解答）
 category: security
 modified: 2015-11-07
 tags: [security,return-to-libc,ustc]
