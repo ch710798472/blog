@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 个人简历RESUME
+title: 个人简历(RESUME)
 category: personal
 tags: personal
 permalink: /introduction/
@@ -10,7 +10,7 @@ pinned: true
 excerpt: "我的个人简历 My Resume"
 ---
 
-姓名| 陈 浩 |
+姓名 | 陈 浩 |
 -----|------|----
 性 别| 男|
 出生年月| 1993.8 |
