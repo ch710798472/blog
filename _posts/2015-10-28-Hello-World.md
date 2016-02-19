@@ -3,8 +3,7 @@ layout: post
 title: 个人简介
 category: personal
 tags: personal
-permalink: /introduction/
-modified: 2015-11-03
+modified: 2016-02-19
 comments: true
 pinned: true
 excerpt: "I'am a student come from USTC majoring in SSE.Living in the city of SuZhou in JiangSu provence."
