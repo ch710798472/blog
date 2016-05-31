@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Github Analytics项目解析
-category: java
-modified: 2016-05-02
+category: python
+modified: 2016-05-30
 tags: [django,github]
 comments: true
 pinned: true
