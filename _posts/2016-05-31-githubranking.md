@@ -240,7 +240,7 @@ class SearchForm(forms.Form):
 ```
 def readcfg():
     '''
-    read config.cfg file
+    read config.cfg file to config github
     :return:github username,password
     '''
     config=ConfigParser.ConfigParser()
@@ -460,9 +460,440 @@ def nonSocialConnect(USER,REPO):
         print 'chgithub.SocialConnect->DONE'
         return 1
 ```
+#####3.2.3/RecGithub/function
+　　为什么单独把这个里面的代码拿出来讲呢，是因为这里面有很多的数据分析的算法，比如knn算法，svd，apriori算法等。所使用的数据集在static/bootstrap/data中，我们采用的数据是open edx这个在线的学习系统的公开数据集，我们需要分析用户的类别以及挖掘高分项目是否跟某些特性有关，还有就是推荐课程。下面是具体的要求：K-近邻算法对学生进行了分类，归一化处理了每个特征向量的数值，主要是从nevents, ndays_act, nplay_video, nchapters, nforum_posts 这几个字段来分类出学习者的 viewed,explored,certified和grade。
+　　实现Apriori算法，挖掘课程高分者之间的共同特征，比如论坛活跃的学习者、学习次数多的学习者以及学历等之间与课程获得高分之间的关联等。
+　　load_csv.py中是导入数据的代码，以及对数据进行清洗转化的过程，没什么好讲的。
+　　基于物品的协同过滤算法的实现，来推荐课程。
+　　knn.py是实现了knn算法：
+```
+def knn(base, dataSet, labels, k):
+    '''
+    :param base: 基础数据矩阵用来对其他数据进行分类距离的计算
+    :param dataSet: 需要分类的数据集合
+    :param labels: 每一条记录真实属于哪一类的标签
+    :param k: knn算法中所取的top数量
+    :return sortedClassCount:返回排序好的分类数据，是labels值
+    '''
+    dataSetSize = dataSet.shape[0]
+    diffMat = tile(base, (dataSetSize,1)) - dataSet # 重复 max(datasetsize,1) 次
+    sqDiffMat = diffMat**2
+    sqDistances = sqDiffMat.sum(axis=1)
+    distances = sqDistances**0.5
+    sortedDistIndicies = distances.argsort()     
+    classCount={}          
+    for i in range(k):
+        voteIlabel = labels[sortedDistIndicies[i]]
+        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1 # 有标签属性了加一，没有则加入
+    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
 
-####4.
+def createMatrix(filename):
+    '''
+    :param filename: 需要处理成矩阵的数据文件
+    :return returnMat,classLabelVector:数据矩阵，数据标签矩阵
+    '''
+    fr = open(filename)
+    numberOfLines = len(fr.readlines())
+    returnMat = zeros((numberOfLines,5))        #返回向量
+    classLabelVector = []                       #labels
+    fr = open(filename)
+    index = 0
+    for line in fr.readlines():
+        line = line.strip()
+        listFromLine = line.split('\t')
+        returnMat[index,:] = listFromLine[0:5]
+        classLabelVector.append(int(round(float(listFromLine[-1])))) #仅仅是为了处理int('1.0')这个错误加了这么多函数
+        index += 1
+    print "record count = %d \n" % index
+    return returnMat,classLabelVector
+    
+def Normalized(dataSet):
+    '''
+    :param dataSet: 数据矩阵
+    :return normDataSet, ranges, minVals：归一化后的矩阵，取值范围，最小值
+    '''
+    minVals = dataSet.min(0)
+    maxVals = dataSet.max(0)
+    ranges = maxVals - minVals                      #处理不同的特征值之间数值的不统一，进行归一化
+    normDataSet = zeros(shape(dataSet))
+    m = dataSet.shape[0]
+    normDataSet = dataSet - tile(minVals, (m,1))
+    normDataSet = normDataSet/tile(ranges, (m,1))   #归一化后数值 =（真实数据-最小值）/（最大值-最小值）
+    return normDataSet, ranges, minVals
+   
+def data_test(filename):
+    '''
+    :param filename: 需要进行分类的文件
+    :return: 输出分类结果，以及错误率等
+    '''
+    how = 0.10      # 测数数据占数据的百分比
+    dataMat,dataLabels = createMatrix(filename)
+    normMat, ranges, minData = Normalized(dataMat)
+    m = normMat.shape[0]
+    testNum = int(m*how)
+    errorCount = 0.0
+    for i in range(testNum):
+        classifierResult = knn(normMat[i,:],normMat[testNum:m,:],dataLabels[testNum:m],3)
+        print "classifier into : %d, real answer is: %d" % (classifierResult, dataLabels[i])
+        if (classifierResult != dataLabels[i]): errorCount += 1.0
+    print "error rate : %f \n" % (errorCount/float(testNum))
+    print "error count：%d \n" %errorCount
 
-####5.
+def start_test():
+    '''
+    导入数据文件，测试knn算法开始函数
+    '''
+    # lc.load_csv_data()
+    data_test('edx_knn.csv')
 
-####6.
+def displayData(filename):
+    how = 0.10      # 测数数据占数据的百分比
+    dataMat,dataLabels = createMatrix(filename)
+    normMat, ranges, minData = Normalized(dataMat)
+    m = normMat.shape[0]
+    testNum = int(m*how)
+    errorCount = 0.0
+    classifierData = []
+    realData = []
+    for i in range(testNum):
+        classifierResult = knn(normMat[i,:],normMat[testNum:m,:],dataLabels[testNum:m],3)
+        classifierData.append(classifierResult)
+        realData.append(dataLabels[i])
+        if (classifierResult != dataLabels[i]): errorCount += 1.0
+    return testNum,(errorCount/float(testNum)), errorCount, classifierData, realData
+```
+　　fptree.py是apriori算法的一种优化实现方式，用来挖掘频繁项集，对于大量数据的处理效率提升非常明显。
+```
+class treeNode:
+    def __init__(self, value, num, parentNode):
+        self.name = value
+        self.count = num
+        self.nodeLink = None
+        self.parent = parentNode
+        self.children = {} 
+    
+    def inc(self, num):
+        self.count += num
+        
+    def disp(self, ind=1):
+        print '  '*ind, self.name, ' ', self.count
+        for child in self.children.values():
+            child.disp(ind+1)
+
+def load_data(filename):
+    '''
+    输出[viewed,explored,certified,gender,grade,nevents,ndays_act,nplay_video,nchapters,nforum_posts,incomplete_flag]
+    对应[1     ,2       ,3        ,4     ,5    ,6      ,7        ,8          ,9        ,10          ,11    ]序列数据集
+    :param filename:
+    :return:
+    '''
+    f = open(filename)
+    result = []
+    j = 0
+    for line in f.readlines():
+        line = line.strip().split('\t')
+        i = 0
+        temp = []
+        for l in line:
+            i = i + 1
+            if l != '0':
+                temp.append(i)
+        result.append(temp)
+    return result
+
+def start_test():
+    '''
+    测试开始函数
+    :return: 频繁项集
+    '''
+    dataSet = load_data('data/edx_fp.csv')
+    initSet = createInitSet(dataSet)
+    fptree,headertab = createTree(initSet,50)
+    frequentSet = []
+    frequentTree(fptree,headertab,50,set([]),frequentSet)
+    print frequentSet
+
+def createInitSet(dataSet):
+    '''
+    :param dataSet: 要挖掘频繁项集的数据集
+    :return: 字典数据集
+    '''
+    retDict = {}
+    for trans in dataSet:
+        retDict[frozenset(trans)] = 1
+    return retDict
+
+def createTree(dataSet, support=1):
+    '''
+    create FP-tree from dataset
+    :param dataSet: 输入数据字典
+    :param support: 出现最小次数
+    :return:
+    '''
+    headertab = {}
+    for trans in dataSet:
+        for item in trans:
+            headertab[item] = headertab.get(item, 0) + dataSet[trans]
+    for k in headertab.keys():  # 去掉不符合个数要求的频繁项集
+        if headertab[k] < support:
+            del(headertab[k])
+    freqItemSet = set(headertab.keys())
+    if len(freqItemSet) == 0: return None, None
+    for k in headertab:
+        headertab[k] = [headertab[k], None]
+    retTree = treeNode('root', 1, None) # 建立一个根节点
+    for tranSet, count in dataSet.items():  # 第二次遍历数据集
+        localD = {}
+        for item in tranSet:
+            if item in freqItemSet:
+                localD[item] = headertab[item][0]
+        if len(localD) > 0:
+            orderedItems = [v[0] for v in sorted(localD.items(), key=lambda p: p[1], reverse=True)]
+            updateFpTree(orderedItems, retTree, headertab, count)
+    return retTree, headertab
+
+def updateFpTree(items, fptree, headertab, count):
+    '''
+    :param items: 更新项集
+    :param fptree: fp树
+    :param headertab: 头指针表
+    :param count: treeNode里面的num
+    :return:
+    '''
+    if items[0] in fptree.children: # 看看是否有子节点
+        fptree.children[items[0]].inc(count)
+    else:
+        fptree.children[items[0]] = treeNode(items[0], count, fptree)
+        if headertab[items[0]][1] == None:
+            headertab[items[0]][1] = fptree.children[items[0]]
+        else:
+            updateFpHeader(headertab[items[0]][1], fptree.children[items[0]])
+    if len(items) > 1:
+        updateFpTree(items[1::], fptree.children[items[0]], headertab, count)
+        
+def updateFpHeader(node, targetNode):
+    '''
+    更新头指针表
+    :param node:
+    :param targetNode: 插入节点
+    :return:
+    '''
+    while (node.nodeLink != None):
+        node = node.nodeLink
+    node.nodeLink = targetNode
+        
+def ascendTree(leafNode, prefixPath):
+    '''
+    迭代上溯整个fp树
+    :param leafNode:
+    :param prefixPath:
+    :return:
+    '''
+    if leafNode.parent != None:
+        prefixPath.append(leafNode.name)
+        ascendTree(leafNode.parent, prefixPath)
+    
+def findPrefixPath(basePat, treeNode):
+    '''
+    生成条件模式基，遍历整个头指针链表
+    :param basePat:
+    :param treeNode:
+    :return:
+    '''
+    condPats = {}
+    while treeNode != None:
+        prefixPath = []
+        ascendTree(treeNode, prefixPath)
+        if len(prefixPath) > 1: 
+            condPats[frozenset(prefixPath[1:])] = treeNode.count
+        treeNode = treeNode.nodeLink
+    return condPats
+
+def frequentTree(fptree, headertab, support, preFix, frequentSet):
+    '''
+    递归查找频繁项集
+    :param fptree:
+    :param headertab:
+    :param support:
+    :param preFix:
+    :param frequentSet:
+    :return:
+    '''
+    bigL = [v[0] for v in sorted(headertab.items(), key=lambda p: p[1])]
+    for basePat in bigL:
+        newFreqSet = preFix.copy()
+        newFreqSet.add(basePat)
+        # print 'finalFrequent Item: ',newFreqSet
+        frequentSet.append(newFreqSet)
+        condPattBases = findPrefixPath(basePat, headertab[basePat][1])
+        # print 'condPattBases :',basePat, condPattBases
+
+        myCondTree, myHead = createTree(condPattBases, support)
+        # print 'head from conditional tree: ', myHead
+        if myHead != None:
+            # print 'conditional tree for: ',newFreqSet
+            frequentTree(myCondTree, myHead, support, newFreqSet, frequentSet)
+```
+　　svd.py的代码实现了推荐算法，而且对于物品属性较多的情况作了奇异值分解，提升了算法的时间效率。
+```
+def create_matrix(filename,numbers):
+    '''
+    :param filename: 需要处理成矩阵的数据文件
+    :return returnMat:数据矩阵
+    '''
+    fr = open(filename)
+    numberOfLines = len(fr.readlines())
+    returnMat = zeros((numberOfLines,numbers))        #返回向量
+    fr = open(filename)
+    index = 0
+    for line in fr.readlines():
+        line = line.strip()
+        listFromLine = line.split('\t')
+        returnMat[index,:] = listFromLine[:numbers]
+        index += 1
+    print "record count = %d \n" % index
+    return mat(returnMat)
+
+def create_testData():
+    dataMat = mat(
+           [[0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 5],
+           [0, 0, 0, 3, 0, 4, 0, 0, 0, 0, 3],
+           [0, 0, 0, 0, 4, 0, 0, 1, 0, 4, 0],
+           [3, 3, 4, 0, 0, 0, 0, 2, 2, 0, 0],
+           [5, 4, 5, 0, 0, 0, 0, 5, 5, 0, 0],
+           [0, 0, 0, 0, 5, 0, 1, 0, 0, 5, 0],
+           [4, 3, 4, 0, 0, 0, 0, 5, 5, 0, 1],
+           [0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 4],
+           [0, 0, 0, 2, 0, 2, 5, 0, 0, 1, 2],
+           [0, 0, 0, 0, 5, 0, 0, 0, 0, 4, 0],
+           [1, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0]])
+    return dataMat
+
+#三种距离计算方式，采用基于物品的相似度计算（还有基于内容和基于用户的推荐），
+#之所以采用 列向量是因为通常用户的数目大于物品的数目，计算会少很多
+def ecludSim(x,y):
+    '''
+    欧氏距离计算
+    :param x:列向量
+    :param y:列向量
+    :return:欧氏距离
+    '''
+    return 1.0/(1.0 + la.norm(x - y))
+
+def pearsSim(x,y):
+    '''
+    皮尔逊相关系数计算，并且把值从-1~1归一化到0~1
+    :param x:列向量
+    :param y:列向量
+    :return:皮尔逊相关系数
+    '''
+    if len(x) < 3 : return 1.0
+    return 0.5+0.5*corrcoef(x, y, rowvar = 0)[0][1]
+
+def cosSim(x,y):
+    '''
+    余弦相似度计算,并且将值从-1~1归一化到0~1
+    :param x:列向量
+    :param y:列向量
+    :return:余弦相似度
+    '''
+    num = float(x.T*y)
+    d = la.norm(x)*la.norm(y)
+    return 0.5+0.5*(num/d)
+
+def est(dataMat, user, meas, course):
+    '''
+    推荐系统的课程相似性
+    :param dataMat: 用户课程矩阵
+    :param user: 用户行号
+    :param meas: 相似性计算函数
+    :param course: 课程
+    :return:相似度
+    '''
+    n = shape(dataMat)[1]
+    simTotal = 0.0; ratSimTotal = 0.0
+    for j in range(n):
+        userLine = dataMat[user,j]
+        if userLine == 0: continue
+        both = nonzero(logical_and(dataMat[:,course].A>0, \
+                                      dataMat[:,j].A>0))[0]
+        if len(both) == 0: similarity = 0
+        else: similarity = meas(dataMat[both,course], \
+                                   dataMat[both,j])
+        simTotal += similarity
+        ratSimTotal += similarity * userLine
+    if simTotal == 0: return 0
+    else: return ratSimTotal/simTotal
+
+def svdsigma(dataMat):
+    '''
+    calculate S*90% to reduce dataMat 找到90%有效值是包含奇异值
+    :param dataMat: 数据矩阵
+    :return: 有效的奇异值个数
+    '''
+    U,S,VT = la.svd(dataMat)
+    S1 = S**2
+    Ssum = sum(S1)*0.9
+    Slen = len(S)
+    for i in range(Slen):
+        print sum(S1[:i])
+        if(sum(S1[:i]) > Ssum):
+            sumTemp = i
+            break
+    if abs(sum(S1[:sumTemp])-Ssum) > abs(sum(S1[:sumTemp-1])-Ssum) :
+        Sn = sumTemp-1
+    else:
+        Sn = sumTemp
+    return Sn+1
+
+def svd(dataMat, user, meas, course,Sn):
+    '''
+    采用了svd奇异矩阵来简化大量数据的相似度计算
+    :param dataMat: 数据矩阵
+    :param user: 用户行号
+    :param meas: 相似性计算函数
+    :param course: 课程
+    :return:相似度
+    '''
+    n = shape(dataMat)[1]
+    simTotal = 0.0; ratSimTotal = 0.0
+    U,S,VT = la.svd(dataMat)
+    Sig = mat(eye(Sn)*S[:Sn])
+    xformedCourses = dataMat.T * U[:,:Sn] * Sig.I
+    for j in range(n):
+        userLine = dataMat[user,j]
+        if userLine == 0 or j==course: continue
+        similarity = meas(xformedCourses[course,:].T,\
+                             xformedCourses[j,:].T)
+        simTotal += similarity
+        ratSimTotal += similarity * userLine
+    if simTotal == 0: return 0
+    else: return ratSimTotal/simTotal
+
+def recommended(dataMat, user, N=3, meas=cosSim, estMethod=est):
+    '''
+    推荐算法
+    :param dataMat: 数据矩阵
+    :param user: 用户行号
+    :param N: 推荐前N个
+    :param meas: 相似度计算函数
+    :param estMethod: svd函数
+    :return:前N个推荐课程
+    '''
+    unratedCourses = nonzero(dataMat[user,:].A==0)[1]
+    if len(unratedCourses) == 0: return 'you have complete all course'
+    courseScores = []
+    Sn = svdsigma(dataMat)
+    for course in unratedCourses:
+        svdScore = estMethod(dataMat, user, meas, course,Sn)
+        courseScores.append((course, svdScore))
+    return sorted(courseScores, key=lambda bb: bb[1], reverse=True)[:N]
+
+def start_test():
+    # dataMat = create_matrix("edx_course.csv")
+    dataMat = create_testData()
+    return recommended(dataMat, 1, meas=pearsSim , estMethod=svd)
+```
+####4. 感悟
+　　整个项目做下来的感觉就是，从没有方向到自己找到方向在这里要感谢孟宁老师的指导，没有他这个项目真的做不下来。虽然我写了很多的代码注释，而且也介绍了很多，但是还有很多的遗漏，我会慢慢的改善，逐步的添加上去，所以未待完续。。。
