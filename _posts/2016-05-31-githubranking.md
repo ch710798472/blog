@@ -6,10 +6,7 @@ modified: 2016-05-02
 tags: [django,github]
 comments: true
 pinned: true
-excerpt: "1. 准备工作
-　　1）百度腾讯云官网，注册，认证（不是学生的跳过学生认证）。
-　　2）安装apache,git,pip,django等工具
-　　3) 测试安装结果...."
+excerpt: "1环境搭建 1.1 系统-Ubuntu 1.2 开源的世界-git..."
 ---
 ####1.环境搭建
 #####1.1 系统-Ubuntu
