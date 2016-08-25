@@ -54,9 +54,27 @@ sudo pip install d3py
 　　我们来看一下项目的目录结构：![](http://i.imgur.com/j5zg5qx.png)发现和django的结构差不多.idea先忽略，RecGithub里面存放的就是后台的代码，RecGithub/templates里面是页面模板，Web里面是django项目的一些配置，static里面是一些前端的JS等一些静态数据。
 #####3.2.1 /Web目录
 　　/urls.py文件中，我们可以看到整个项目的URL设置，比如form是搜索时候用的，admin是后台入口，其他的都是什么功能可以去试试就知道了，这很简单。
+```
+urlpatterns = [
+    url(r'^$',views.index,name='home'),
+    url(r'^form/$',views.form,name='form'),
+    url(r'^repo/$',views.repo,name='repo'),
+    url(r'^connect/$',views.connect,name='connect'),
+    url(r'^add/(\d+)/(\d+)/$', views.add, name='add'),
+    url(r'^search/$', views.search,name='search'),
+    url(r'^nonconnect/$', views.nonconnect,name='nonconnect'),
+    url(r'^admin/', admin.site.urls),
+    url(r'^home/$',views.index,name='home'),
 
+]
+```
 　　settings.py中要注意的是静态文件的设置，我们可以看到对不同的系统中的文件的路径的一个特殊处理。其中debug的设置，在开发的时候设置为true可以更好的帮助我们来调试代码。
-
+```
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(__file__), '../static/').replace('\\','/'),
+)
+```
 #####3.2.2 /RecGithub目录
 　　views.py文件定义了文件的视图控制结构包括页面的跳转控制等。
 ```
@@ -162,7 +180,24 @@ class SearchForm(forms.Form):
             return self.name
 ```
 
-
+　　/templates目录下是页面的html文件，采用的是django模板来设计的页面，把页面分成头、内容、尾三个部分。比如在base.html文件中，定义了模板：
+```
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=0.618">
+    <title>{% black title %}Github Analytics{% endblack %}</title>
+</head>
+<body>
+</body>
+</html>
+```
+　　然后在connect.html中继承模板就可以了：
+```
+{% extends 'base.html' %}
+```
+　　这样的页面可维护性大大提高，而且有利于流畅性的提升以及代码的阅读。
+  chgithub.py文件是整个项目的核心，里面有github人物关系图谱的数据获取，关系的建立，以及各个排名的算法。
 ```
 def readcfg():
     '''
