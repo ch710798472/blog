@@ -186,51 +186,15 @@ class SearchForm(forms.Form):
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=0.618">
-    <title>{% block title %}Github Analytics{% endblock %}</title>
+    <title>{% black title %}Github Analytics{% endblack %}</title>
 </head>
 <body>
- 
-{% include 'nav.html' %}
-{% include 'form.html' %}
- 
-{% block content %}
-<div>loading</div>
-{% endblock %}
- 
-{#{% include 'bottom.html' %}#}
-{# #}
-{#{% include 'tongji.html' %}#}
- 
 </body>
 </html>
 ```
 　　然后在connect.html中继承模板就可以了：
 ```
 {% extends 'base.html' %}
-
-{% block title %}关系图谱{% endblock %}
-
-{% block content %}
-{#{% include 'ad.html' %}#}
-{#{% url 'add' 4 5 %}#}
-{#    <a href="{{ request.path }}?{{ request.GET.urlencode }}&delete=1">当前网址加参数 delete</a>#}
-{#    {% for i in List %}#}
-{#        {{ i }} {% if not forloop.last %},{% endif %}#}
-{#    {% endfor %}#}
-    <form id="formId" class="container" method='post'>
-        {% csrf_token %}
-{#        {{ form }}#}
-        {% for field in form %}
-            <div class="field">
-                {{ field.label_tag }}{{ field }}
-                {{ field.errors }}
-            </div>
-        {% endfor %}
-        <input type="submit" class="buttoncss" value="搜索">
-        <input type="button" class="buttoncss" name="Submit" value="返回" onclick="javascript:history.back(1)" />
-    <p style="margin-top:50px; color:#F00">提示：我们的系统采用缓存加速模式，用的用户越多查询速度越快，如果您是第一个查询此类信息，请耐心等待。</p>
-    </form>
-{% endblock %}
 ```
 　　这样的页面可维护性大大提高，而且有利于流畅性的提升以及代码的阅读。
   chgithub.py文件是整个项目的核心，里面有github人物关系图谱的数据获取，关系的建立，以及各个排名的算法。
