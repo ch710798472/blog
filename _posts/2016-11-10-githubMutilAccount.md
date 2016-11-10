@@ -16,7 +16,7 @@ excerpt: "1. 背景
   这一步很重要，可以为你每次提交代码省去很多的麻烦，不管哪一个git服务器肯定都可以配置密钥免密登录，所以命令行输入如下命定生成密钥  
 ```ssh-keygen -t rsa -C "your-email-address"```
 一直按entrr即可，然后进入到.ssh/文件夹，里面生成了刚才id_rsa和id_rsa.pub文件，那么如果你有两个不同的账号那么只需要再执行一次秘钥生成命令，这一次需要修改秘钥文件，你可以加一个后缀，比如我这里我生成的第二个密钥文件id_ras_github  
-![id_ras](../img/id_rsa.png)
+![id_ras](/img/id_rsa.png)
   使用```ssh-add id_rsa_github```命令添加密钥到ssh中。
   PS：你需要复制两个xxx.pub里面的内容到git服务器你自己的账号ssh key里面。  
 #### 2.2 配置两个账号不冲突  
