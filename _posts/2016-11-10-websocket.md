@@ -40,30 +40,30 @@ excerpt: "1. websocket介绍
   但是大量使用注解的同时也带来了一个麻烦，理解注解背后的实现原理较为困难，注解也并不是万能解决方案它也是有弊端的。
 ### 2. 使用  
   首先新建一个spring boot项目，一个普通的maven java项目即可，pom文件使用最基本的spring boot配置，在添加如下依赖
-```  
+  
         <!--velocity模板依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-velocity</artifactId>
         </dependency>
-
-        <!--websocket依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
-        </dependency>
-        <!--fastjson依赖-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.20</version>
-        </dependency>
-```  
+         <!--websocket依赖-->
+         <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-websocket</artifactId>
+         </dependency>
+         <!--fastjson依赖-->
+         <dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>fastjson</artifactId>
+             <version>1.2.20</version>
+         </dependency>
+         
   一个是velocity模板的依赖用来写前端页面模板，一个是websocket依赖，一个是fastjson依赖用来支持websocket在传输过程中encode和decode。  
 #### 2.1 webSocket代码  
   Java后端websocket需要两个类，一个是WebSocketConfig另一个就是WebSocketController。第一个是提供websocket使用的bean，第二个是消息处理类。 
-  `WebSocketConfig.java`:
-````
+  `WebSocketConfig.java`:  
+  
+```
 @Configuration
   public class WebSocketConfig {
       @Bean
@@ -71,8 +71,10 @@ excerpt: "1. websocket介绍
           return new ServerEndpointExporter();
       }
   }
-````  
+```  
+
   `WebSocketController.java`:  
+  
 ```  
 @ServerEndpoint(value = "/websocket", encoders = {ServerEncoder.class}, decoders = {ServerDecoder.class})
 @Component
@@ -155,6 +157,7 @@ public class WebSocketController {
 
 }
 ```  
+
   我们使用了四个注解  
   `@ServerEndpoint(value = "/websocket", encoders = {ServerEncoder.class}, decoders = {ServerDecoder.class})`定义websocke拦截的请求url，以及数据传输过程自定义解码编码使用的方式  
   `@Component`  
@@ -162,6 +165,7 @@ public class WebSocketController {
   `@RequestMapping("/websocket")`定义spring boot拦截url请求，配合websocket()函数上的注解，最终请求的地址是[http://localhost:8080/websocket/hi](http://localhost:8080/websocket/hi)  
   也就是说输入上述网址，就会得到一个页面，在这个页面上可以使用websocket。接下来我们看一下websocket()函数返回的vm页面：
   `websocket.vm`页面写在/resources/templates里面  
+  
 ```  
 <!DOCTYPE HTML>
 <html>
@@ -268,9 +272,11 @@ public class WebSocketController {
 </script>
 </html>
 ```  
+
 #### 2.2 运行  
   spring boot可以直接执行main函数运行，速度快而且方便调试，如果需要打包成war在部署的话耗时耗力，在前期验证程序功能可以很方便。
   新建文件Application.java：  
+
 ```
   @Configuration
   @ComponentScan
@@ -282,6 +288,7 @@ public class WebSocketController {
       }
   }
 ```  
+  
   启动main函数可以看到内嵌的tomcat启动过程中的日志信息，输入网址，期望的聊天界面就出来了，效果如下：  
   ![1](https://github.com/ch710798472/blog/raw/gh-pages/img/websocket3.png)
   ![2](https://github.com/ch710798472/blog/raw/gh-pages/img/websocket4.png)
