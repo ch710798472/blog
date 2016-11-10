@@ -16,22 +16,22 @@ excerpt: "1. 背景
   这一步很重要，可以为你每次提交代码省去很多的麻烦，不管哪一个git服务器肯定都可以配置密钥免密登录，所以命令行输入如下命定生成密钥  
 ```ssh-keygen -t rsa -C "your-email-address"```
 一直按entrr即可，然后进入到.ssh/文件夹，里面生成了刚才id_rsa和id_rsa.pub文件，那么如果你有两个不同的账号那么只需要再执行一次秘钥生成命令，这一次需要修改秘钥文件，你可以加一个后缀，比如我这里我生成的第二个密钥文件id_ras_github  
-![id_ras](id_rsa.png)
+![id_ras](https://github.com/ch710798472/blog/blob/gh-pages/img/id_ras.png)
   使用```ssh-add id_rsa_github```命令添加密钥到ssh中。
   PS：你需要复制两个xxx.pub里面的内容到git服务器你自己的账号ssh key里面。  
 #### 2.2 配置两个账号不冲突  
   查看.ssh文件夹下是否有config文件，如果没有则创建```touch config```，然后添加如下内容  
-`
-Host github.com
- HostName github.com
- User ch710798472
- IdentityFile ~/.ssh/id_rsa_github
-
-Host gitlab
- HostName xxxx.alibaba-inc.com
- User yourusername
- IdentityFile ~/.ssh/id_rsa
-`
+  
+    Host github.com
+     HostName github.com
+     User ch710798472
+     IdentityFile ~/.ssh/id_rsa_github
+    
+    Host gitlab
+     HostName xxxx.alibaba-inc.com
+     User yourusername
+     IdentityFile ~/.ssh/id_rsa
+     
   如果有config文件只需要按照上面的格式添加另一个host就可以了，其中HostName对应git服务器地址，Host是别名，identityFile就是对应的密钥，User是你在服务器上使用的用户名。  
 #### 3. 验证  
   确保git服务器上已经添加了ssh-key之后就可以本地测试一下是否成功了，```ssh -T git@github.com```首先是测试github是否成功，如果成功会出现  
