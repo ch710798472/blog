@@ -52,5 +52,6 @@ git push origin gh-pages
 #结果  
 　　好了，到这里你的github博客应该可以访问了，YourGitName.github.io/blog就能访问了,如果不能访问，请在新建一个YourGitName.github.io的项目，可能是没有这个项目导致的，你说为什么不用YourGitName.github.io作为域名，我这不是留给你自己写自己真正的博客用的嘛，我只是给你个参考而不能让你用不了本身的YourGitName.github.io。
 ![](http://i.imgur.com/bb7e5Qc.png)  
-　　如果你觉得这篇博客还不错，请给个评论或者给我的github项目一个星[myblog](https://github.com/ch710798472/just_fork_blog)。谢谢，我会在空闲的时间更新个友情链接的模块，到时候大家可以把我得博客加入到友情链接里面。
+　　还有个问题就是图片链接地址问题，如果你上传图片到了仓库，然后去github上找到它，比如地址是https://github.com/ch710798472/blog/blob/gh-pages/img/id_ras.png，那么只需要把blob改成raw就可以当做markdown的图片链接地址了，再也不需要图床或者其他的上传图片处理了，而且永久保留不怕丢失。
+    如果你觉得这篇博客还不错，请给个评论或者给我的github项目一个星[myblog](https://github.com/ch710798472/just_fork_blog)。谢谢，我会在空闲的时间更新个友情链接的模块，到时候大家可以把我得博客加入到友情链接里面。
 
