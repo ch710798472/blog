@@ -294,5 +294,4 @@ public class WebSocketController {
 ```  
   
   启动main函数可以看到内嵌的tomcat启动过程中的日志信息，输入网址，期望的聊天界面就出来了，效果如下：  
-  ![1](https://github.com/ch710798472/blog/raw/gh-pages/img/websocket3.png)
-  ![2](https://github.com/ch710798472/blog/raw/gh-pages/img/websocket4.png)
+  ![1](https://github.com/ch710798472/blog/raw/gh-pages/img/websocket2.png)
