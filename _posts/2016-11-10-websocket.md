@@ -11,8 +11,12 @@ excerpt: "1. websocket介绍
 ---
 ### 1. 介绍  
 ### 1.1 websocket  
-  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。一开始的握手需要借助HTTP请求完成。[](http://baike.baidu.com/link?url=tAaaueb4FPkhCtWLb8BUfQ8qcAQ4gzrNUu7gK4JXM8eBrxa4UobfvYhQcWW0nqrGD0drV_SVcmCiPfamVznX-0_ZMhSRuS51GA6qjKArez3)
-  简单来说，就是websocket实现了有状态的http长连接，并且性能还OK，没有采用轮询来实现，而是在建立连接过程中通过http报头中connection：upgrade字段进行协议升级，从而建立一条快速通道。
+  WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信(full-duplex)。一开始的握手需要借助HTTP请求完成。[百科](http://baike.baidu.com/link?url=tAaaueb4FPkhCtWLb8BUfQ8qcAQ4gzrNUu7gK4JXM8eBrxa4UobfvYhQcWW0nqrGD0drV_SVcmCiPfamVznX-0_ZMhSRuS51GA6qjKArez3)
+  简单来说，就是websocket实现了全双工通信，没有采用轮询和长连接来实现，而是在建立连接过程中通过http报头中connection：upgrade字段进行协议升级，从而建立一条全双工通道。  
+  WebSocket技术的优点有：  
+    1）通过第一次HTTP Request建立了连接之后，后续的数据交换都不用再重新发送HTTP Request，节省了带宽资源；   
+    2) WebSocket的连接是双向通信的连接，在同一个TCP连接上，既可以发送，也可以接收;   
+    3)具有多路复用的功能(multiplexing)，也即几个不同的URI可以复用同一个WebSocket连接。这些特点非常类似TCP连接，但是因为它借用了HTTP协议的一些概念，所以被称为了WebSocket
 ### 1.2 spring boot  
   Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Boot致力于在蓬勃发展的快速应用开发领域（rapid application development）成为领导者。
   其实spring boot解决了最主要的问题就是现在的spring项目中有大量的xml文件的配置以及复杂的依赖管理，在spring boot几乎都可以使用注解来进行配置，大量减少了xml文件的使用，甚至web项目都不需要web.xml文件了，对于各种依赖spring boot也提供了几个核心的基础pom文件，能满足大部分人的日常需求了（整个pom文件看起来清爽多了）。
