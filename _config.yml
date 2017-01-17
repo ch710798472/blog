@@ -3,7 +3,7 @@
 # Site wide configuration
 ####################################
 #
-title: 0==||=======>
+title: 计算机的末法时代
 email: sa615291@mail.ustc.edu.cn
 description: > # this means to ignore newlines until "baseurl:"
   A simple and awesome blog theme powered by jekyll.
@@ -37,7 +37,7 @@ redcarpet:
 ####################################
 #
 owner:
-  name: ch
+  name: 陈浩
   avatar: bio-photo.jpg
   bio: "似剑非攻，墨眉无锋，漆黑如墨，无刃无锋！"
   email: sa615291@mail.ustc.edu.cn
