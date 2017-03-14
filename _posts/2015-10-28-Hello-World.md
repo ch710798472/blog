@@ -23,6 +23,4 @@ system.print("ch");
 
 O=======||=============================>
 似剑非攻，墨眉无锋，漆黑如墨，无刃无锋！
-![](http://i.imgur.com/QiADw8Z.jpg)
-![](http://i.imgur.com/GihcX08.jpg)
 
