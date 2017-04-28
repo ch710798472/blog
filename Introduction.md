@@ -4,102 +4,108 @@ title: 个人简历(RESUME)
 category: personal
 tags: personal
 permalink: /introduction/
-modified: 2016-02-19
+modified: 2017-04-28
 comments: true
 pinned: true
 excerpt: "我的个人简历 My Resume"
 ---
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>个人简历</title>
-    <link rel="stylesheet" type="text/css" href="https://github.com/ch710798472/blog/raw/gh-pages/css/resume/normalize.css">
-    <link rel="stylesheet" href="https://github.com/ch710798472/blog/raw/gh-pages/css/resume/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://github.com/ch710798472/blog/raw/gh-pages/css/resume/normalize.css">
+    <link rel="stylesheet"
+          href="https://github.com/ch710798472/blog/raw/gh-pages/css/resume/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://github.com/ch710798472/blog/raw/gh-pages/css/resume/main.css">
 </head>
 
 <body marginheight="0">
-    <h1>陈浩<span style="font-size:18px;">&nbsp;/&nbsp;Hao Chen</span></h1>
-    <h2>Java研发工程师<span style="font-size:18px;">&nbsp;/&nbsp;Java R & D Engineer</span></h2>
-    <blockquote>
-        <p>
-            <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>188&nbsp;9698&nbsp;1912</span>
-        </p>
-        <p>
-            <i class="fa fa-envelope-square fa-lg" aria-hidden="true"></i> <span style='padding-left:5px;'>710798472@qq.com</span>
-        </p>
-        <p>
-            <i class="fa fa-home fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>http://ch710798472.github.io/blog/</span>
-        </p>
-        <p>
-            <i class="fa fa-github fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>https://github.com/ch710798472</span>
-        </p>
-    </blockquote>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>教育经历</span></h3>
-        <ul>
-        <li style="list-style:none;"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span style='padding-left:5px;'>中国科学技术大学</span>
-            <blockquote id="xueli">
-                <p>软件系统设计 (<strong><em>2015 - 2018</em></strong>)</p>
-            </blockquote>
-        </li>
-        <li style="list-style:none;"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span style='padding-left:5px;'>华中农业大学</span>
-            <blockquote id="xueli">
-                <p>计算机科学与技术 (<strong><em>2011 - 2015</em></strong>)</p>
-            </blockquote>
-        </li>
-        </ul>
-        <hr>
-    <hr>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>实习经历</span></h3>
-    <h4><i class="fa fa-users" aria-hidden="true"></i><span>阿里巴巴</span></h4>
-    <strong style="float:right;"><em>2016.07 - 2017.07</em></strong>
-    <p><strong>研发工程师</strong>
+<h1>陈浩<span style="font-size:18px;">&nbsp;/&nbsp;Hao Chen</span></h1>
+<h2>Java研发工程师<span style="font-size:18px;">&nbsp;/&nbsp;Java R & D Engineer</span></h2>
+<blockquote>
+    <p>
+        <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>188&nbsp;9698&nbsp;1912</span>
     </p>
-    <ul class="nolist">
-        <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：天猫国际身份证系统</span></li>
-        <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：支持天猫国际跨境交易清关。</span></li>
-        <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：主要是交易链路改造、身份证系统编写。</span></li>
-    </ul>
-    <ul class="nolist">
-        <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：天猫国际支持花呗分期</span></li>
-        <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：改造交易链路使得天猫国际用户和卖家可以使用花呗分期。</span></li>
-        <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：主要是交易链路改造。</span></li>
-    </ul>
-    <hr>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>项目经历</span></h3>
-    <ul class="nolist">
-            <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：大数据分析相关技术研究及Open edX Analytics 架构分析</span></li>
-            <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：分析edX 的数据分析架构，使用Django+bootstrap+d3.js 呈现分析结果。</span></li>
-            <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：负责项目的编写以及需求分析。</span></li>
-    </ul>
-    <ul class="nolist">
-            <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：基于HBase 的数据查询系统的设计与实现</span></li>
-            <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：在Linux Hadoop 平台下用Java 语言实现非关系型数据库HBase 的大量数据实时查询。</span></li>
-            <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：独立完成整个项目。</span></li>
-    </ul>
-    <hr>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>技能</span></h3>
-        <ul class="nolist">
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>1年Java开发经验，熟悉jvm、spring以及其他主流框架</span></li>
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉数据分析、数据挖掘原理，了解Hadoop 平台的运行，并且熟悉hbase数据库</span></li>
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉电商交易系统</span></li>
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉Python 数据分析，D3.JS 可视化</span></li>
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉shellcode、逆向工程等安全知识</span></li>
-        </ul>
-    <hr>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>奖励与证书</span></h3>
-        <ul class="nolist">
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>大一，大二多次获得学习成绩优秀奖、优秀团员、三好学生。</span></li>
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>大二时获得华中数学建模竞赛三等奖。</span></li>
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>2014 年5 月通过“全国计算机技术与软件专业技术资格（水平）考试”软件设计师考核。</span></li>
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>研究生入学获得二等奖学金。</span></li>
-        </ul>
-    <hr>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>主修课程</span></h3>
-        <ul class="nolist">
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>计算机网络，计算机组成原理，数据库原理，操作系统，计算机体系结构，编译原理，数字电路。</span></li>
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>汇编语言， C/C++程序设计，数据结构与算法，java 程序设计，算法导论</span></li>
-            <li><i class="fa fa-star" aria-hidden="true"></i><span>数字图像处理，计算机视觉，信息安全，安卓安全与无线网安全</span></li>
-        </ul>
-    <hr>
+    <p>
+        <i class="fa fa-envelope-square fa-lg" aria-hidden="true"></i> <span
+            style='padding-left:5px;'>710798472@qq.com</span>
+    </p>
+    <p>
+        <i class="fa fa-home fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>http://ch710798472.github.io/blog/</span>
+    </p>
+    <p>
+        <i class="fa fa-github fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>https://github.com/ch710798472</span>
+    </p>
+</blockquote>
+<h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>教育经历</span></h3>
+<ul>
+    <li style="list-style:none;"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span style='padding-left:5px;'>中国科学技术大学</span>
+        <blockquote id="xueli">
+            <p>软件系统设计 (<strong><em>2015 - 2018</em></strong>)</p>
+        </blockquote>
+    </li>
+    <li style="list-style:none;"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span style='padding-left:5px;'>华中农业大学</span>
+        <blockquote id="xueli">
+            <p>计算机科学与技术 (<strong><em>2011 - 2015</em></strong>)</p>
+        </blockquote>
+    </li>
+</ul>
+<hr>
+<hr>
+<h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>实习经历</span></h3>
+<h4><i class="fa fa-users" aria-hidden="true"></i><span>阿里巴巴</span></h4>
+<strong style="float:right;"><em>2016.07 - 2017.07</em></strong>
+<p><strong>研发工程师</strong>
+</p>
+<ul class="nolist">
+    <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：天猫国际身份证系统</span></li>
+    <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：支持天猫国际跨境交易清关。</span></li>
+    <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：主要是交易链路改造、身份证系统编写。</span></li>
+</ul>
+<ul class="nolist">
+    <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：天猫国际支持花呗分期</span></li>
+    <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：改造交易链路使得天猫国际用户和卖家可以使用花呗分期。</span></li>
+    <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：主要是交易链路改造。</span></li>
+</ul>
+<hr>
+<h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>项目经历</span></h3>
+<ul class="nolist">
+    <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：大数据分析相关技术研究及Open edX Analytics 架构分析</span></li>
+    <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：分析edX 的数据分析架构，使用Django+bootstrap+d3.js 呈现分析结果。</span>
+    </li>
+    <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：负责项目的编写以及需求分析。</span></li>
+</ul>
+<ul class="nolist">
+    <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：基于HBase 的数据查询系统的设计与实现</span></li>
+    <li><i class="fa fa-book"
+           aria-hidden="true"></i><span>项目简介：在Linux Hadoop 平台下用Java 语言实现非关系型数据库HBase 的大量数据实时查询。</span></li>
+    <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：独立完成整个项目。</span></li>
+</ul>
+<hr>
+<h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>技能</span></h3>
+<ul class="nolist">
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>1年Java开发经验，熟悉jvm、spring以及其他主流框架。</span></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉数据分析、数据挖掘原理，了解Hadoop 平台的运行，并且熟悉hbase数据库。</span></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉电商交易系统。</span></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉Python 数据分析，D3.JS 可视化。</span></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉shellcode、逆向工程等安全知识。</span></li>
+</ul>
+<hr>
+<h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>奖励与证书</span></h3>
+<ul class="nolist">
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>大一，大二多次获得学习成绩优秀奖、优秀团员、三好学生。</span></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>大二时获得华中数学建模竞赛三等奖。</span></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>2014 年5 月通过“全国计算机技术与软件专业技术资格（水平）考试”软件设计师考核。</span></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>研究生入学获得二等奖学金。</span></li>
+</ul>
+<hr>
+<h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>主修课程</span></h3>
+<ul class="nolist">
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>计算机网络，计算机组成原理，数据库原理，操作系统，计算机体系结构，编译原理，数字电路。</span></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>汇编语言， C/C++程序设计，数据结构与算法，java 程序设计，算法导论</span></li>
+    <li><i class="fa fa-star" aria-hidden="true"></i><span>数字图像处理，计算机视觉，信息安全，安卓安全与无线网安全</span></li>
+</ul>
+<hr>
 </body>
+</html>
 
