@@ -9,8 +9,6 @@ comments: true
 pinned: true
 excerpt: "我的个人简历 My Resume"
 ---
-![图片1](https://github.com/ch710798472/blog/raw/gh-pages/img/resume1.jpg)
-
 <head>
     <meta charset="UTF-8">
     <title>个人简历</title>
@@ -20,70 +18,88 @@ excerpt: "我的个人简历 My Resume"
 </head>
 
 <body marginheight="0">
-    <h1>叶福林<span style="font-size:18px;">&nbsp;/&nbsp;Fulin Ye</span></h1>
-    <h2>高级开发工程师<span style="font-size:18px;">&nbsp;/&nbsp;Senior Engineer</span></h2>
+    <h1>陈浩<span style="font-size:18px;">&nbsp;/&nbsp;Hao Chen</span></h1>
+    <h2>Java研发工程师<span style="font-size:18px;">&nbsp;/&nbsp;Java R & D Engineer</span></h2>
     <blockquote>
         <p>
-            <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>170&nbsp;XXXX&nbsp;XXXX</span>
+            <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>188&nbsp;9698&nbsp;1912</span>
         </p>
         <p>
-            <i class="fa fa-envelope-square fa-lg" aria-hidden="true"></i> <span style='padding-left:5px;'>yerugemimi@gmail.com</span>
+            <i class="fa fa-envelope-square fa-lg" aria-hidden="true"></i> <span style='padding-left:5px;'>710798472@qq.com</span>
         </p>
         <p>
-            <i class="fa fa-home fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>http://yieldblog.me</span>
+            <i class="fa fa-home fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>http://ch710798472.github.io/blog/</span>
         </p>
         <p>
-            <i class="fa fa-github fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>https://github.com/trainking</span>
+            <i class="fa fa-github fa-lg" aria-hidden="true"></i><span style='padding-left:5px;'>https://github.com/ch710798472</span>
         </p>
     </blockquote>
+    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>教育经历</span></h3>
+        <ul>
+        <li style="list-style:none;"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span style='padding-left:5px;'>中国科学技术大学</span>
+            <blockquote id="xueli">
+                <p>软件系统设计 (<strong><em>2015 - 2018</em></strong>)</p>
+            </blockquote>
+        </li>
+        <li style="list-style:none;"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span style='padding-left:5px;'>华中农业大学</span>
+            <blockquote id="xueli">
+                <p>计算机科学与技术 (<strong><em>2011 - 2015</em></strong>)</p>
+            </blockquote>
+        </li>
+        </ul>
+        <hr>
     <hr>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>关于我</span></h3>
-    <ul class="nolist">
-        <li><i class="fa fa-star" aria-hidden="true"></i><span>3年PHP为主的web开发经验</span></li>
-        <li><i class="fa fa-star" aria-hidden="true"></i><span>通晓前端到后台的各个技术堆栈</span></li>
-        <li><i class="fa fa-star" aria-hidden="true"></i><span>自学成才的野生程序员</span></li>
-    </ul>
-    <hr>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>工作经历</span></h3>
-    <h4><i class="fa fa-users" aria-hidden="true"></i><span>鑫三维软件管理有限公司</span></h4>
-    <strong style="float:right;"><em>2015.09 - 2015.11</em></strong>
-    <p><strong>高级开发工程师</strong>
-    </p>
-    <ul class="nolist">
-        <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：ROS（鑫三维制造业软件管理系统）</span></li>
-        <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：制造业企业管理系统</span></li>
-        <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的职责：基于PHP+Yii1.1开发该系统的主要系统模块，主要涉及供应链和财务内容的开发。</span></li>
-    </ul>
-    <h4><i class="fa fa-users" aria-hidden="true"></i><span>派啦网络技术有限公司</span></h4>
-    <strong style="float:right;"><em>2013.10 - 2015.08</em></strong>
+    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>实习经历</span></h3>
+    <h4><i class="fa fa-users" aria-hidden="true"></i><span>阿里巴巴</span></h4>
+    <strong style="float:right;"><em>2016.07 - 2017.07</em></strong>
     <p><strong>研发工程师</strong>
     </p>
     <ul class="nolist">
-        <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：派啦网</span></li>
-        <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：农业电商网站</span></li>
-        <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的职责：前期负责基于PHP+ThinkPHP开发C店业务。后来兼任了实体业务开发的。公司转型后，主要负责实体店的后台业务的开发。这段时间内，因为要做APP的缘故，基于Java+jersey开发过一段时间的APP的后台API。</span></li>
+        <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：天猫国际身份证系统</span></li>
+        <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：支持天猫国际跨境交易清关。</span></li>
+        <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：主要是交易链路改造、身份证系统编写。</span></li>
+    </ul>
+    <ul class="nolist">
+        <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：天猫国际支持花呗分期</span></li>
+        <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：改造交易链路使得天猫国际用户和卖家可以使用花呗分期。</span></li>
+        <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：主要是交易链路改造。</span></li>
     </ul>
     <hr>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>教育经历</span></h3>
-    <ul>
-    <li style="list-style:none;"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span style='padding-left:5px;'>南昌大学</span>
-        <blockquote id="xueli">
-            <p>动漫设计与制作 (<strong><em>2011 - 2014</em></strong>)</p>
-        </blockquote>
-    </li>
+    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>项目经历</span></h3>
+    <ul class="nolist">
+            <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：大数据分析相关技术研究及Open edX Analytics 架构分析</span></li>
+            <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：分析edX 的数据分析架构，使用Django+bootstrap+d3.js 呈现分析结果。</span></li>
+            <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：负责项目的编写以及需求分析。</span></li>
+    </ul>
+    <ul class="nolist">
+            <li><i class="fa fa-product-hunt" aria-hidden="true"></i><span>项目名称：基于HBase 的数据查询系统的设计与实现</span></li>
+            <li><i class="fa fa-book" aria-hidden="true"></i><span>项目简介：在Linux Hadoop 平台下用Java 语言实现非关系型数据库HBase 的大量数据实时查询。</span></li>
+            <li><i class="fa fa-keyboard-o" aria-hidden="true"></i><span>我的工作：独立完成整个项目。</span></li>
     </ul>
     <hr>
-    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>技术经历</span></h3>
-    <ol>
-        <li>php+ThinkPHP电商网站的开发</li>
-        <li>Java+Jersey开发过APP的API</li>
-        <li>PHP+Yii1.1开发企业管理系统</li>
-        <li>对前端内容均有涉猎（尤其对于AngularJS）</li>
-        <li>熟悉Linux下的服务器运维和Docker虚拟化</li>
-        <li>熟悉Mysql数据库</li>
-        <li>熟悉使用redis做缓存</li>
-        <li>现今正在研究PHP源码和拓展开发</li>
-    </ol>
+    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>技能</span></h3>
+        <ul class="nolist">
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>1年Java开发经验，熟悉jvm、spring以及其他主流框架</span></li>
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉数据分析、数据挖掘原理，了解Hadoop 平台的运行，并且熟悉hbase数据库</span></li>
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉电商交易系统</span></li>
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉Python 数据分析，D3.JS 可视化</span></li>
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>熟悉shellcode、逆向工程等安全知识</span></li>
+        </ul>
+    <hr>
+    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>奖励与证书</span></h3>
+        <ul class="nolist">
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>大一，大二多次获得学习成绩优秀奖、优秀团员、三好学生。</span></li>
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>大二时获得华中数学建模竞赛三等奖。</span></li>
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>2014 年5 月通过“全国计算机技术与软件专业技术资格（水平）考试”软件设计师考核。</span></li>
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>研究生入学获得二等奖学金。</span></li>
+        </ul>
+    <hr>
+    <h3><i class="fa fa-bookmark" aria-hidden="true"></i><span>主修课程</span></h3>
+        <ul class="nolist">
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>计算机网络，计算机组成原理，数据库原理，操作系统，计算机体系结构，编译原理，数字电路。</span></li>
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>汇编语言， C/C++程序设计，数据结构与算法，java 程序设计，算法导论</span></li>
+            <li><i class="fa fa-star" aria-hidden="true"></i><span>数字图像处理，计算机视觉，信息安全，安卓安全与无线网安全</span></li>
+        </ul>
     <hr>
 </body>
 
